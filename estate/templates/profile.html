@@ -1,0 +1,83 @@
+{% load static %}
+ 
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+   <link
+     href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600&family=Montserrat:wght@100;200;300;400;500;600&display=swap"
+     rel="stylesheet"
+   />
+   <link rel="stylesheet" href="{% static 'css/index.css' %}">
+   <link rel="stylesheet" href="{% static 'css/realtor.css' %}">
+   <title>Become a Realtor</title>
+ </head>
+ <body>
+   <!-- =============== loading animation ================= -->
+   <div class="loading_animation">
+     <img src="{% static 'assets/images/Golden Land Invst ltd Black logo.jpg' %}" alt="" />
+   </div>
+   <!-- ================== The Nav Bar ===================    -->
+   {% include 'header.html' %}
+
+   <!-- ========================= Becoming a realtor ======================  -->
+
+   <div class="becoming_a_realtor">
+     <div class="realtor_head">
+       <h3>Become a Realtor</h3>
+       <div class="benefits">
+         <h3>What Are the Benefits of Becoming a REALTOR?</h3>
+         <p>
+           While becoming a REALTOR is not required for you to have a
+           successful career in real estate, there are many advantages that
+           will help you stand out in your industry.
+         </p>
+       </div>
+
+       <div class="networking">
+         <h3>Networking</h3>
+         <p>
+           Becoming a member of the NAR provides you with a unique title and
+           gravitas that many other agents do not possess. Additionally, you
+           will be able to develop a lasting relationship with other agents,
+           which can expand your sphere of influence and network and help you
+           grow your business.
+         </p>
+       </div>
+
+       <div class="certifications">
+         <h3>Real Estate Designations and Certifications</h3>
+         <p>
+           As a REALTOR, you will have the ability to take additional classes
+           that will allow you to receive highly sought-after real estate
+           designations. These designations can help you become an expert in
+           your niche and allow you to grow your business and increase your
+           earnings and income potential. A list of some of the most popular
+           certifications is as follows.
+         </p>
+       </div>
+     </div>
+
+     <div class="realtor_form">
+       <h2>Register below to get started</h2>
+       <form action="" method="POST">
+         {% csrf_token %}
+         {{ profile_form }}
+         <button type="submit">Submit</button>
+       </form>
+     </div>
+   </div>
+
+   <!-- ================== Footer ===================  -->
+   <footer>
+     <p>&copy; Goldenland {% now "Y" %}</p>
+   </footer>
+
+   {% comment %} <script src="../js/dummyDataBase.js" defer></script> {% endcomment %}
+   <script src="{% static 'js/generalFunctions.js' %}" defer></script>
+ </body>
+</html>

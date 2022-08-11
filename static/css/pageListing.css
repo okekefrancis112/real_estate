@@ -1,0 +1,148 @@
+@import url("./index.css");
+
+.listings {
+  display: grid;
+  gap: 1.25rem;
+  padding: 6rem 0;
+}
+
+.listings .address {
+  font-size: var(--larger-font);
+  padding: 2rem 0;
+}
+
+.listings .property_image {
+  margin: 0 auto;
+  width: 100%;
+  max-height: 500px;
+  overflow: hidden;
+}
+.listings .property_image img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+.summary {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.summary_content {
+  padding: 1.25rem 0;
+  border: 1px solid black;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  display: grid;
+  gap: 1.25rem;
+  color: var(--secondary-color);
+}
+
+.summary_content > * {
+  display: flex;
+  justify-content: space-between;
+}
+
+.summary_title {
+  display: block;
+  color: var(--secondary-color);
+  font-size: var(--medium-font);
+}
+
+.property_description {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.video_presentation {
+  padding: 2rem 0;
+  display: grid;
+  gap: 2rem;
+}
+
+.video_presentation h3 {
+  font-size: var(--large-font);
+}
+
+.contact_agent {
+  padding-top: 3rem;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact_agent h3 {
+  font-size: var(--large-font);
+}
+
+.contact_agent .agent_info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 0.5px solid black;
+  border-bottom: 0.5px solid black;
+  padding: 1rem 0;
+}
+
+.contact_agent .agent_info .agent_contact {
+  display: flex;
+  flex-flow: column;
+  gap: 0.75rem;
+  color: #7c7c7c;
+}
+
+.contact_agent .agent_image {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  border: 8px solid white;
+  overflow: hidden;
+  box-shadow: 0px 0px 0px 2px black;
+}
+
+.contact_agent .agent_image img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.property_description h3 {
+  font-size: var(--medium-font);
+  color: var(--secondary-color);
+}
+.property_description .property_description_content p {
+  color: var(--secondary-color);
+  font-size: var(--small-font);
+  text-align: justify;
+  line-height: 24px;
+}
+
+.property_description .property_description_content {
+  border: 1px solid var(--secondary-color);
+  padding: 1.25rem 0;
+  border-right: none;
+  border-left: none;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  justify-content: center;
+}
+.buttons .page_btns {
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: 0.5px solid black;
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.buttons .page_btns:hover {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}

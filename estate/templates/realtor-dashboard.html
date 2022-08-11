@@ -1,0 +1,257 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Realtor Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600&family=Montserrat:wght@100;200;300;400;500;600&display=swap"
+      rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'css/realtor-dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+  </head>
+  <body>
+    <div class="toast" id="copy-toast">
+      <p>Your link has been copied Succesfully</p>
+    </div>
+    <div class="toast" id="update-profile-toast">
+      <p>Your profile has been updated Succesfully</p>
+    </div>
+    <!-- ==================== Dashboard ======================  -->
+    <div class="dashboard__wrapper">
+      <div class="menu__list">
+        <span></span>
+        <span></span>
+      </div>
+      <div class="dashboard">
+        <span id="times">&times;</span>
+        <div class="navigations">
+          <div class="logo">
+            <a href="/"> 
+              <img src="{% static 'assets/images/Golden Land Invst ltd Black logo.jpg' %}" alt="" />
+            </a>
+          </div>
+          <div class="stats navs active">
+            <a href="#stats">
+              <img src="{% static 'assets/images/outline_add_chart_black_24dp.png' %}" alt="" />
+              Stats 
+            </a>
+          </div>
+          <div class="profile navs"> 
+            <a href="{% url 'update_profile' profile.id %}">
+              <img src="{% static 'assets/images/outline_person_black_24dp.png' %}" alt="" />
+              Profile
+            </a>
+          </div>
+        </div>
+        <div class="username">{{user.user_name}}</div>
+      </div>
+      {% comment %} {% for p in profile %} {% endcomment %}
+       
+      {% comment %} <div class="dashboard__content">
+        <div class="profile__content">
+          <div class="header">
+            <h3><span></span> Profile Information</h3>
+          </div>
+         
+          <div class="body"> {% endcomment %}
+            
+              {% comment %} {% if  user %} {% endcomment %}
+            {% comment %} <form id="update" action="" method="POST" enctype="multipart/form-data">
+               {% csrf_token %}
+               {{ profile_form }} {% endcomment %}
+              {% comment %} <label for="text"
+                ><span>Username</span>
+                <input
+                  type="text"
+                  name="full_name"
+                  id="text"
+                  disabled
+                  value={{profile.fullname}} 
+              /></label>
+              <label for="text"
+                ><span>Full name</span>
+                <input
+                  type="text"
+                  name="full_name"
+                  id="text"
+                  disabled
+                  value={{profile.fullname}} 
+              /></label>
+              <label for="email"
+                ><span>Email</span>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  disabled
+                  value={{profile.email}}
+              /></label>
+              <label for="address"
+                ><span>Address</span>
+                <input
+                  type="text"
+                  name="address"
+                  id="address"
+                  disabled
+                  value={{profile.residential_address}}
+              /></label>
+              <label for="state_origin"
+                ><span>State of origin</span>
+                <input
+                  type="text"
+                  name="state_origin"
+                  id="state_origin"
+                  disabled
+                  value={{profile.state}}
+              /></label>
+              <label for="account_merchant"
+                ><span>Account merchant</span>
+                <input
+                  type="text"
+                  disabled
+                  name="account_merchant"
+                  id="account_merchant"
+                  value={{user.account_name}}
+              /></label>
+              <label for="account_number"
+                ><span>Account number</span>
+                <input
+                  type="number"
+                  disabled
+                  name="account_number"
+                  id="account_number"
+                  value={{user.account_number}}
+              /></label>
+              <label for="date_of_birth"
+                ><span>Date of birth</span>
+                <input
+                  type="text"
+                  name="date_of_birth"
+                  disabled
+                  value={{user.date_of_birth}}
+              /></label>
+              <label for="phone"
+                ><span>Phone number</span>
+                <input
+                  type="number"
+                  name="phone"
+                  disabled
+                  id="phone"
+                  value={{user.phone_number}}
+              /></label>
+              <label for="image"
+                ><span>Profile picture</span>
+                <input
+                  type="file"
+                  name="image"
+                  disabled
+                  id="image"
+                  accept="image/*"
+                  value="image.url"
+              /></label> {% endcomment %}
+              {% comment %} <div
+                ><img
+                  src="{% static 'assets/images/outline_edit_note_black_24dp.png' %}" 
+                  alt=""
+                  id="edit-info"
+              /></div>
+              <button  type="submit">Update</button>
+            </form>
+              {% comment %} {% endif %} {% endcomment %}
+           
+          </div>
+         
+        </div>
+        {% comment %} {% endif %} {% endcomment %}
+        {% comment %} {% endfor %} {% endcomment %}
+        
+        
+        <div class="stats__content show">
+          <h3><span></span> Your stats:</h3>
+          
+          
+          <div class="referred__clients">
+            <p>
+              {% for profile in my_refs %}
+              You have referred <span id="client_number">3 {{ profile.user }}</span> clients to
+              Goldenland
+              {% endfor %}
+            </p>
+            
+          </div>
+          <div class="referral__code">
+            <h3>Your referral code</h3>
+            <div class="referral__info">
+              <input
+                type="text"
+                name=""
+                id="referral__code"
+                disabled
+                value="goldenland.com/123456"
+              />
+              <button type="button" id="copy">copy</button>
+            </div>
+          </div>
+          <div class="client__details">
+            <h3>Clients Referred</h3>
+            <div class="client__info">
+              <h4>Mr. Samson Eloho</h4>
+              <span>samsoneloho@gmail.com</span>
+            </div>
+            <div class="client__info">
+              <h4>Mr. Abdul Sikiru</h4>
+              <span>abdulsikiru@gmail.com</span>
+            </div>
+            <div class="client__info">
+              <h4>Mr. Bakare Ashimolowo</h4>
+              <span>bakareashimolow@gmail.com</span>
+            </div>
+            <div class="client__info">
+              <h4>Mr. Bakare Ashimolowo</h4>
+              <span>bakareashimolow@gmail.com</span>
+            </div>
+            <div class="client__info">
+              <h4>Mr. Bakare Ashimolowo</h4>
+              <span>bakareashimolow@gmail.com</span>
+            </div>
+            <div class="client__info">
+              <h4>Mr. Bakare Ashimolowo</h4>
+              <span>bakareashimolow@gmail.com</span>
+            </div>
+            <div class="client__info">
+              <h4>Mr. Bakare Ashimolowo</h4>
+              <span>bakareashimolow@gmail.com</span>
+            </div>
+            <div class="client__info">
+              <h4>Mr. Bakare Ashimolowo</h4>
+              <span>bakareashimolow@gmail.com</span>
+            </div>
+            <div class="client__info">
+              <h4>Mr. Bakare Ashimolowo</h4>
+              <span>bakareashimolow@gmail.com</span>
+            </div>
+            <div class="client__info">
+              <h4>Mr. Bakare Ashimolowo</h4>
+              <span>bakareashimolow@gmail.com</span>
+            </div>
+            <div class="scroll__btns">
+              <div id="up">&LongRightArrow;</div>
+              <div id="down">&LongRightArrow;</div>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>  
+    
+    <script src="{% static 'js/realtor-dashboard.js' %}" defer></script>
+  </body>
+</html>

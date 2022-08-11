@@ -1,0 +1,460 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600&family=Montserrat:wght@100;200;300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <title>GoldenLand-Home</title>
+  </head>
+  <script src="https://use.fontawesome.com/669a9c5788.js"></script>
+  <body>
+    <!-- =============== loading animation ================= -->
+    <div class="loading_animation">
+      <img src="{% static 'assets/images/Golden Land Invst ltd Black logo.jpg' %}" alt="" />
+    </div>
+    <!-- ================== The Nav Bar ===================    -->
+    {% include 'header.html' %}
+
+    <!-- ================ The Hero Section ================  -->
+
+    <div class="hero_section">
+      <div class="hero_images">
+        <img src="{% static 'assets/images/banner1.jpeg' %}" alt="banner1"/>
+        <img src="{% static 'assets/images/banner2.jpeg' %}" alt="banner2"/>
+        <img src="{% static 'assets/images/banner3.jpeg' %}" alt="banner3"/>
+        <img src="{% static 'assets/images/banner4.jpeg' %}" alt="banner4"/>
+      </div>
+    </div>
+    <div class="hero_text">
+      <div class="hero_text_content container">
+        <h3>Start your Real Estate journey with us.</h3>
+        <p>
+          We deliver only excellence and aim to exceed expectations in
+          everything we do.
+        </p>
+        <a href="#get-started">Get Started</a>
+      </div>
+    </div>
+
+    <!-- ================== The search panel ================ -->
+
+    <!-- <div class="search_panel">
+      <div class="search_content container grid">
+        <h3><span></span> Search by your parameters</h3>
+        <form action="" class="flex">
+          <input
+            type="text"
+            name="location"
+            id="location"
+            placeholder="Location"
+          />
+          <input type="number" name="price" id="type" placeholder="Price" />
+          <button type="submit">Search Now</button>
+        </form>
+      </div>
+    </div> -->
+
+    <!-- ==================== Properties for you =====================  -->
+    
+    
+    <div class="properties_for_you" id="property_head">
+      <div class="properties_content container">
+        <h3><span></span>New properties for you</h3> 
+        {% comment %} <div class="properties_grid animate_up"></div> {% endcomment %}
+        {% for estate  in estates %}
+        {% if estate %}
+        <div class="properties_grid animate_up" style="transform: translate(0%); opacity: 0.995;">
+          <div class="property_image">
+            <a href="{% url 'estate_detail' estate.slug %}">
+              {% if estate.image %}
+              <img class="props_img" src="{{ estate.image.url }}" alt="">
+              {% endif %}  
+            </a>
+            <div class="property_info"><span>{{estate.price}}</span><span>{{ estate.location }}</span></div>
+          {% comment %} </div><div class="property_image"><a href="./html/pageListing.html"><img class="props_img" src="./assets/images/banner2.jpeg"></a><div class="property_info"><span>$40000</span><span>$44B, Ejigbo, Lagos, Nigeria</span></div></div><div class="property_image"><a href="./html/pageListing.html"><img class="props_img" src="./assets/images/banner3.jpeg"></a><div class="property_info"><span>$60000</span><span>$44B, Ejigbo, Lagos, Nigeria</span></div></div><div class="property_image"><a href="./html/pageListing.html"><img class="props_img" src="./assets/images/banner4.jpeg"></a><div class="property_info"><span>$45000</span><span>$44B, Ejigbo, Lagos, Nigeria</span></div></div><div class="property_image"><a href="./html/pageListing.html"><img class="props_img" src="./assets/images/img1.jpeg"></a><div class="property_info"><span>$35000</span><span>$44B, Ejigbo, Lagos, Nigeria</span></div></div><div class="property_image"><a href="./html/pageListing.html"><img class="props_img" src="./assets/images/img2.jpeg"></a><div class="property_info"><span>$55000</span><span>$44B, Ejigbo, Lagos, Nigeria</span></div></div><div class="property_image"><a href="./html/pageListing.html"><img class="props_img" src="./assets/images/img3.jpg"></a><div class="property_info"><span>$65000</span><span>$44B, Ejigbo, Lagos, Nigeria</span></div></div><div class="property_image"><a href="./html/pageListing.html"><img class="props_img" src="./assets/images/img4.jpeg"></a><div class="property_info"><span>$63000</span><span>$44B, Ejigbo, Lagos, Nigeria</span></div></div></div> {% endcomment %}
+     
+          {% else %}
+          no property yet
+          {% endif %}
+          {% endfor %}
+          <div class="buttons"></div>
+      </div>
+    </div>
+
+    <!-- ================== popular residence ==================  -->
+    <div class="popular_residence container grid animate_up">
+      <h3><span></span> Our Popular Residences</h3>
+      <div class="residences">
+        <div class="residence">
+          <div class="residence_image">
+            <img src="./assets/images/banner1.jpeg" alt="" />
+          </div>
+          <span class="location"
+            ><img src="./assets/images/location.png" alt="" /> Lagos,
+            Nigeria</span
+          >
+          <div class="residence_details">
+            <div class="number_of_beds">
+              <img src="./assets/images/bed.png" alt="" />4Beds
+            </div>
+            <div class="room_size">
+              <img src="./assets/images/square1.png" alt="" />8x8
+            </div>
+            <div class="square_space">
+              <img src="./assets/images/square2.png" alt="" /><span
+                >2000m<sup>2</sup></span
+              >
+            </div>
+          </div>
+          <div class="residence_price_booking">
+            <a href="./html/pageListing.html">Book now</a>
+            <span class="price">$4 000 000</span>
+          </div>
+        </div>
+
+        <div class="residence">
+          <div class="residence_image">
+            <img src="./assets/images/banner2.jpeg" alt="" />
+          </div>
+          <span class="location"
+            ><img src="./assets/images/location.png" alt="" /> Lagos,
+            Nigeria</span
+          >
+          <div class="residence_details">
+            <div class="number_of_beds">
+              <img src="./assets/images/bed.png" alt="" />6Beds
+            </div>
+            <div class="room_size">
+              <img src="./assets/images/square1.png" alt="" />8x8
+            </div>
+            <div class="square_space">
+              <img src="./assets/images/square2.png" alt="" /><span
+                >2000m<sup>2</sup></span
+              >
+            </div>
+          </div>
+          <div class="residence_price_booking">
+            <a href="./html/pageListing.html">Book now</a>
+            <span class="price">$5 000 000</span>
+          </div>
+        </div>
+
+        <div class="residence">
+          <div class="residence_image">
+            <img src="./assets/images/banner3.jpeg" alt="" />
+          </div>
+          <span class="location"
+            ><img src="./assets/images/location.png" alt="" /> Lagos,
+            Nigeria</span
+          >
+          <div class="residence_details">
+            <div class="number_of_beds">
+              <img src="./assets/images/bed.png" alt="" />5Beds
+            </div>
+            <div class="room_size">
+              <img src="./assets/images/square1.png" alt="" />8x8
+            </div>
+            <div class="square_space">
+              <img src="./assets/images/square2.png" alt="" /><span
+                >2000m<sup>2</sup></span
+              >
+            </div>
+          </div>
+          <div class="residence_price_booking">
+            <a href="./html/pageListing.html">Book now</a>
+            <span class="price">$3 000 000</span>
+          </div>
+        </div>
+
+        <div class="residence">
+          <div class="residence_image">
+            <img src="./assets/images/banner4.jpeg" alt="" />
+          </div>
+          <span class="location"
+            ><img src="./assets/images/location.png" alt="" /> Lagos,
+            Nigeria</span
+          >
+          <div class="residence_details">
+            <div class="number_of_beds">
+              <img src="./assets/images/bed.png" alt="" />3Beds
+            </div>
+            <div class="room_size">
+              <img src="./assets/images/square1.png" alt="" />8x8
+            </div>
+            <div class="square_space">
+              <img src="./assets/images/square2.png" alt="" /><span
+                >2000m<sup>2</sup></span
+              >
+            </div>
+          </div>
+          <div class="residence_price_booking">
+            <a href="./html/pageListing.html">Book now</a>
+            <span class="price">$2 000 000</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="black"></div>
+
+    <!-- =================== Values =================  -->
+    <div class="values animate_up">
+      <div class="values_content container grid">
+        <h3><span></span> Values</h3>
+        <div class="value_grid">
+          <div class="value_box">
+            <div class="name_position">
+              <span class="name">GoldenLand</span>
+              <span class="position">Company</span>
+            </div>
+            <div class="value_details">
+              <sup>"</sup>
+              <p>
+                we deliver only excellence and aim to exceed expectations in
+                everything we do.
+              </p>
+            </div>
+          </div>
+
+          <div class="value_box">
+            <div class="name_position">
+              <span class="name">GoldenLand</span>
+              <span class="position">Company</span>
+            </div>
+            <div class="value_details">
+              <sup>"</sup>
+              <p>
+                We conduct ourselves in the highest ethical standards,
+                demonstrating honesty and fairness in every decision and action
+                .
+              </p>
+            </div>
+          </div>
+
+          <div class="value_box">
+            <div class="name_position">
+              <span class="name">GoldenLand</span>
+              <span class="position">Company</span>
+            </div>
+            <div class="value_details">
+              <sup>"</sup>
+              <p>
+                Our clients needs and best interest are at our heart in
+                everything we do.
+              </p>
+            </div>
+          </div>
+
+          <div class="value_box">
+            <div class="name_position">
+              <span class="name">GoldenLand</span>
+              <span class="position">Company</span>
+            </div>
+            <div class="value_details">
+              <sup>"</sup>
+              <p>
+                We treat our clients and each other with dignity and respect at
+                all time.
+              </p>
+            </div>
+          </div>
+
+          <div class="value_box">
+            <div class="name_position">
+              <span class="name">GoldenLand</span>
+              <span class="position">Company</span>
+            </div>
+            <div class="value_details">
+              <sup>"</sup>
+              <p>We believe in having fun at work and with each other</p>
+            </div>
+          </div>
+        </div>
+        <div class="value_badges">
+          <div class="badge">
+            <img src="./assets/images/loyalty.png" alt="" />
+            <p>Loyalty</p>
+          </div>
+          <div class="badge">
+            <img src="./assets/images/trust.png" alt="" />
+            <p>Trusthworthy</p>
+          </div>
+          <div class="badge">
+            <img src="./assets/images/reliable.png" alt="" />
+            <p>Reliable</p>
+          </div>
+          <div class="badge">
+            <img src="./assets/images/promise.png" alt="" />
+            <p>We do as promised</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= Advert ===============  -->
+    <div class="advert animate_up">
+      <div class="advert_content container">
+        <div class="advert_left">
+          <img src="./assets/images/banner1.jpeg" alt="" />
+        </div>
+        <div class="advert_right">
+          <div class="advert_right_title">
+            <span></span>
+            <h3>Watch this space</h3>
+          </div>
+          <h4>Comfort is our top priority for you</h4>
+          <p>
+            When you do business with us, we give you our best and we do our
+            best to follow our clients up in order to ensure thier satisfaction.
+          </p>
+          <ul>
+            <li>We follow our clients up for feedback.</li>
+            <li>We give the best of services to our clients.</li>
+            <li>Clients get the best value for what they pay for.</li>
+            <li>We keep strong relationships with our clients</li>
+          </ul>
+          <a href="#get_started">Get started</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============== Now Selling ==================  -->
+    <div class="now_selling animate_up" id="now-selling">
+      <h3><span></span> Now Selling</h3>
+      <div class="now_selling_content container">
+        <div class="now_selling_details">
+          <div class="now_selling_content_header">
+            <h4>The Evidence</h4>
+            <div class="now_selling_location_info">
+              <div class="now_title">Title: Excision</div>
+
+              <div class="now_location">
+                <img src="./assets/images/location.png" alt="" /> Ketu, Epe
+              </div>
+            </div>
+          </div>
+
+          <div class="price_size">
+            <div class="now_price">
+              <img src="./assets/images/price.png" alt="" /> N600 000
+            </div>
+            <div class="now_size">
+              <img src="./assets/images/size.png" alt="" /> 600sqm
+            </div>
+          </div>
+
+          <div class="now_selling_info">
+            <p>
+              The Evidence is an proposed gated community located in the City of
+              Epe. Its's about 5min drive to Ketu Epe Police Station, Federal
+              model college and 35min drive to Ikorodu
+            </p>
+          </div>
+          <a href="./html/pageListing.html" id="evidence">Learn more</a>
+        </div>
+
+        <div class="now_selling_image animate_up">
+          <img src="./assets/images/evidence.jpeg" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <!-- =============== About ================  -->
+    <div class="about_us animate_up" id="about">
+      <h3><span></span> About us</h3>
+      <div class="about_content container">
+        <h4>We're passionate about one thing... Your Investment</h4>
+        <p>
+          Goldenland investment limited mission is to modernize and progress the
+          experience of buying and selling real estate by cultivating a spirit
+          of collaboration, innovation, and integrity. Our company’s team of
+          committed professionals embrace the following core values.
+        </p>
+      </div>
+    </div>
+
+    <!-- ================== Contact =================  -->
+    <div class="contact_details container" id="contact">
+      <h3><span></span>Contact details</h3>
+
+      <div class="contact_content_container">
+        <div class="contact_head animate_up">
+          <h2>We would love to hear from you</h2>
+
+          <div class="contact_info">
+            <div class="contact_info_details">
+              <span> <b> Email us:</b> goldenlandpeak@gmail.com</span>
+              <span> <b>Call us:</b> +234 816 623 6342</span>
+              <span
+                ><b>We are at:</b>Eputu Mall, Eputu Bus Stop, Ajah, Lagos
+              </span>
+            </div>
+
+            <div class="contact_info_social_media">
+              <img src="./assets/images/icons8-facebook-50.png" alt="" />
+              <!-- <img src="./assets/images/icons8-google-plus-50.png" alt="" /> -->
+              <img src="./assets/images/icons8-linkedin-50.png" alt="" />
+              <img src="./assets/images/icons8-twitter-squared-50.png" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <div class="contact_form animate_up">
+          <form id="frm" action="" method="post">
+            {% csrf_token %}
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Your full name"
+            />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Your email"
+            />
+            <input
+              type="number"
+              name="phone"
+              id="phone"
+              placeholder="Your phone number"
+            />
+            <textarea
+              name="message"
+              id="message"
+              placeholder="Your message"
+            ></textarea>
+            <button id="send" type="submit">Send</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================== Footer ===================  -->
+    <footer>
+      <p>&copy; Goldenland {% now "Y" %}</p>
+    </footer>
+
+    <script> 
+      const form = document.querySelector('#send');
+      form.onsubmit = (e) => {
+        e.preventDefault();
+      }
+    </script>
+
+    {% comment %} <script src="{% static 'js/dummyDataBase.js' %}" defer></script> {% endcomment %}
+    <script src="{% static 'js/generalFunctions.js' %}" defer></script>
+    <script src="{% static 'js/main.js' %}" defer></script>
+    
+  </body>
+</html>

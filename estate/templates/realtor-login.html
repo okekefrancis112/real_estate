@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600&family=Montserrat:wght@100;200;300;400;500;600&display=swap"
+      rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'css/realtor-login.css' %}">
+    <title>Realtor login page</title>
+  </head>
+  <body>
+    <!-- ================= Login Wrapper =================  -->
+    <div class="login__wrapper">
+      <div class="header"><h3>Realtor Login Portal</h3></div>
+      <div class="login__body">
+        <div class="logo">
+          <a href="/">
+            <img src="{% static 'assets/images/Golden Land Invst ltd Black logo.jpg' %}" alt="" />
+          </a>
+        </div>
+        <h3>Sign in to your dashboard</h3>
+        <form action="" method="post">
+          {% csrf_token %}
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Username"
+          />
+          <input
+            type="password"
+            name="pass1"
+            id="pass1"
+            placeholder="Password"
+          />
+          <button id="submit" type="submit">Sign in</button>
+        </form>
+      </div>
+    </div>
+
+    {% comment %} <script>
+      const btn = document.getElementById("submit");
+      btn.onclick = (e) => {
+        e.preventDefault();
+        window.location.href = "/html/realtor-dashboard.html";
+      };
+    </script> {% endcomment %}
+  </body>
+</html>

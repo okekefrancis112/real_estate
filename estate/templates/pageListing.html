@@ -1,0 +1,99 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600&family=Montserrat:wght@100;200;300;400;500;600&display=swap"
+      rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pageListing.css' %}">
+
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- ==================== loading_animation =================== -->
+    <div class="loading_animation">
+      <img src="{% static 'assets/images/Golden Land Invst ltd Black logo.jpg' %}" alt="" />
+    </div>
+
+    <!-- ================== The Nav Bar ===================    -->
+
+    {% include 'header.html' %}
+
+
+    <!-- ==================== Now Selling Full Details ====================  -->
+    <div class="listings container">
+      <div class="address animate_up">{{ estate.title }}</div>
+      <div class="property_image animate_up">
+        <img src="{{ estate.image.url }}" alt="" />
+      </div>
+      <div class="summary">
+        <span class="summary_title animate_up"><h3>Quick Summary</h3></span>
+        <div class="summary_content animate_up">
+          <div class="location">Location:<span> {{ estate.location }}</span></div>
+          <div class="price">Price:<span> # {{ estate.price }}</span></div>
+          <div class="property_type">Property type:<span>{{ estate.property_type }}</span></div>
+          <div class="status">Status:<span>{{ estate.status }}</span></div>
+          <div class="area">Area:<span>{{ estate.area }}m<sup>2</sup></span></div>
+          <div class="beds">Beds:<span>{{ estate.beds }}</span></div>
+          <div class="bath">Baths:<span>{{ estate.bath }}</span></div>
+          <div class="garages">Garages:<span>{{ estate.garages }}</span></div>
+        </div>
+        <div class="property_description">
+          <h3>Property Description</h3>
+          <div class="property_description_content animate_up">
+            <p>
+              {{ estate.description }}
+            </p>
+          </div>
+        </div>
+        <div class="video_presentation animate_up">
+          <h3>Video preview</h3>
+          <video width="100%" height="90%" controls>
+            <source
+              src="{{ estate.video.url }}"
+              type="video/mp4"/>
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <div class="contact_agent animate_up">
+        <h3>Agents Contact</h3>
+        <div class="agent_info">
+          <div class="agent_image">
+            <img src="/assets/images/person3.png" alt="" />
+          </div>
+          <div class="agent_contact">
+            <div class="agent__name"><p>Bakare Temitayo</p></div>
+            <div class="phone_number"><p>08134117444</p></div>
+            <div class="email"><p>slowpacerapper@gmail.com</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== Properties for you =====================  -->
+    <div class="properties_for_you" id="property_head">
+      <div class="properties_content container">
+        <h3><span></span>New properties for you</h3>
+        <div class="properties_grid animate_up"></div>
+        <div class="buttons"></div>
+      </div>
+    </div>
+
+    <!-- ================== Footer ===================  -->
+    <footer>
+      <p>&copy; Goldenland {% now "Y" %}</p>
+    </footer>
+
+    {% comment %} <script src="../js/dummyDataBase.js" defer></script> {% endcomment %}
+    <script src="{% static 'js/generalFunctions.js' %}" defer></script>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+{% load static %}
+{% comment %} {% load cloudinary %} {% endcomment %}
+
+{% comment %} <div class="nav_bar">
+  <div class="container">
+    <div class="nav_contents flex">
+      <div class="logo">
+        <a href="/"
+          ><img src="{% static 'assets/images/Golden Land Invst Ltd.png' %}" alt="" />
+        </a>
+      </div>
+      <div class="nav_links flex">
+        <ul class="flex">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#now-selling">Now selling</a></li>
+          <li><a href="{% url 'signup' %}">Become a realtor</a></li>
+          <li><a href="{% url 'signin' %}">Log in</a></li>
+        </ul>
+        <a href="#contact" id="contct">Contact</a>
+      </div>
+      <div class="burger">
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+</div> {% endcomment %}
+
+<div class="nav_bar">
+    <div class="container">
+      <div class="nav_contents flex">
+        <div class="logo">
+          <a href="/">
+            <img src="{% static 'assets/images/Golden Land Invst Ltd.png' %}" alt="" />
+          </a>
+        </div>
+
+        
+
+        <div class="nav_links flex">
+          {% if user.is_authenticated %}
+
+          <ul class="flex">
+            <li><a href="/">Home</a></li>
+            <li><a href="#about">About us</a></li>
+            <li><a href="#now-selling">Now selling</a></li>
+            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+            <li><a href="{% url 'signout' %}">Log out</a></li>
+          </ul>
+          <a href="../index.html#contact" id="contct">Contact</a>
+
+          {% else %}
+
+          <ul class="flex">
+            <li><a href="/">Home</a></li>
+            <li><a href="#about">About us</a></li>
+            <li><a href="#now-selling">Now selling</a></li>
+            <li><a href="{% url 'signup' %}">Become a realtor</a></li>
+            <li><a href="{% url 'signin' %}">Log in</a></li>
+          </ul>
+          <a href="../index.html#contact" id="contct">Contact</a>
+
+        {% endif %}
+        </div>
+        
+        <div class="burger">
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="copy-toast">
+    
+    {% for message in messages %}
+    <div class= role="alert">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class= data-dismiss="alert" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    
+    {% endfor %}
+
+  </div>
