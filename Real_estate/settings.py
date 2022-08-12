@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-e1xf+z$e&po+cv=vgo1tpw+-s1wyl*!7=r6w)bzv(ewgka@ql)'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', cast = bool)
 
 ALLOWED_HOSTS = []
 
@@ -141,26 +142,25 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-AUTH_USER_MODEL = 'estate.NewUser'
-SENDER_EMAIL='okekefrancis112@gmail.com'
-SENDER_PASSWORD='oqbhvmxytokvhazg'       
+DEFAULT_AUTO_FIELD = config('DEFAULT_AUTO_FIELD')
+AUTH_USER_MODEL = config('AUTH_USER_MODEL')
+SENDER_EMAIL = config('SENDER_EMAIL')
+SENDER_PASSWORD = config('SENDER_PASSWORD')     
 
 # EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.mailgun.org'
-EMAIL_HOST_USER = "postmaster@sandbox96dce44c07f9408cbaa7f58bcf01b22c.mailgun.org"
-EMAIL_PORT = 587
-EMAIL_HOST_PASSWORD = "8bd07930cb952cc345f7497f60b6e59c-2bf328a5-72e00613"
-EMAIL_PORT = 465
-EMAIL_USE_SSL = True
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_PORT = config('EMAIL_PORT', cast = int)
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = config('EMAIL_PORT', cast = int)
+EMAIL_USE_SSL = config('EMAIL_USE_SSL', cast = bool)
+EMAIL_BACKEND = config('EMAIL_BACKEND')
 
 #CELERY PROJECT SET UP
 
-CELERY_BROKER_URL = "redis://localhost:6379"
-CELERY_RESULT_BACKEND = "redis://localhost:6379"
+CELERY_BROKER_URL = config('CELERY_BROKER_URL')
+CELERY_RESULT_BACKEND = config('CELERY_RESULT_BACKEND')
 CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'Africa/Lagos'
-
+CELERY_TASK_SERIALIZER = config('CELERY_TASK_SERIALIZER')
+CELERY_RESULT_SERIALIZER = config('CELERY_RESULT_SERIALIZER')
+CELERY_TIMEZONE = config('CELERY_TIMEZONE')
